@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">底部导航栏演示</string>
+    <string name="rotation">旋转</string>
+    <string name="scale">缩放</string>
+    <string name="translation">移动</string>
+</resources>
