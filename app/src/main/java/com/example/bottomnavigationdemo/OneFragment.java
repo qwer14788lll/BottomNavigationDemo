@@ -40,8 +40,9 @@ public class OneFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(OneViewModel.class);
+        mViewModel = ViewModelProviders.of(requireActivity()).get(OneViewModel.class);
         // TODO: Use the ViewModel
+        mImageView.setRotation(mViewModel.rotation);
         //ofFloat:对象，动画类型，数值
         final ObjectAnimator objectAnimator =ObjectAnimator.ofFloat(mImageView,"rotation",0,0);
         objectAnimator.setDuration(500);
@@ -52,6 +53,7 @@ public class OneFragment extends Fragment {
                 {
                     float f=mImageView.getRotation();
                     objectAnimator.setFloatValues(f,f+100);
+                    mViewModel.rotation+=100;
                     objectAnimator.start();
                 }
             }
@@ -62,6 +64,7 @@ public class OneFragment extends Fragment {
                 float f=mImageView.getRotation();
                 f=f%360;
                 objectAnimator.setFloatValues(f,0);
+                mViewModel.rotation=0;
                 objectAnimator.start();
             }
         });
